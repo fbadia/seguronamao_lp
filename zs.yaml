@@ -1,0 +1,18 @@
+# Manifesto de deploy na ZeroServer Community Cloud.
+# Referência: https://github.com/zeroserver-cc/demo-apps/blob/main/docs/zs-yaml-reference.md
+#
+# A ZeroServer não faz build a partir do código: ela roda a imagem já publicada no GHCR
+# (gerada pelo workflow .github/workflows/docker-publish.yml ao criar uma tag vX.Y.Z).
+# Para publicar uma nova versão: crie a tag, aguarde o workflow, atualize a tag abaixo e rode `zs deploy`.
+app: seguronamao-lp
+
+# Preferência (não obrigatória) por nodes no Brasil.
+placement:
+  country: br
+
+services:
+  - name: web
+    image: ghcr.io/fbadia/seguronamao-lp:0.1.0
+    ports:
+      - "80"
+    exposed: true
