@@ -107,6 +107,6 @@ docker build -t seguronamao-lp:local . && docker run --rm -p 8080:80 seguronamao
 - [ ] Logo definitivo (o `favicon.svg` do app é o logo padrão do Vite)
 - [ ] Imagem de compartilhamento `og:image` (1200×630) e `og:url`
 - [ ] Domínio definitivo (+ `zs domain add`)
-- [ ] Tornar público o pacote `seguronamao-lp` no GHCR após o primeiro build
+- [x] Pacote `seguronamao-lp` público no GHCR (pull anônimo verificado)
 - [x] Afirmações de segurança validadas (isolamento entre corretoras, criptografia)
 - [x] FAQ validado (funciona no navegador; pode ser adicionado à tela inicial)
