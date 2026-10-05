@@ -59,7 +59,7 @@ Eventos de conversão disparados no cadastro: `generate_lead` (GA4) e `Lead` (Me
 A [ZeroServer](https://zeroserver.cc) roda **imagens Docker já publicadas**: ela não faz build a partir do código. O fluxo é:
 
 1. O GitHub Actions ([.github/workflows/docker-publish.yml](.github/workflows/docker-publish.yml)) gera a imagem multi-arch (amd64 + arm64, exigência da rede) e publica em `ghcr.io/fbadia/seguronamao-lp`.
-2. O [zs.yaml](zs.yaml) aponta para a versão da imagem, e o `zs deploy` sobe o container (nginx, porta 80).
+2. O [zs.yaml](zs.yaml) aponta para a versão da imagem, e o `zs deploy` sobe o container (nginx, porta 8181).
 
 Arquivos envolvidos: `Dockerfile`, `nginx.conf` (gzip, cache e cabeçalhos de segurança, `/healthz`), `.dockerignore` e `zs.yaml`.
 
@@ -95,7 +95,7 @@ Em seguida, aponte um CNAME/A para o gateway da ZeroServer (instruções no reto
 ### Testar a imagem localmente
 
 ```bash
-docker build -t seguronamao-lp:local . && docker run --rm -p 8080:80 seguronamao-lp:local
+docker build -t seguronamao-lp:local . && docker run --rm -p 8080:8181 seguronamao-lp:local
 ```
 
 ## Pendências antes de publicar
