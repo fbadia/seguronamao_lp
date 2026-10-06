@@ -1,0 +1,40 @@
+# Publica a landing page no GitHub Pages como ambiente de testes.
+# URL: https://fbadia.github.io/seguronamao_lp/
+# As páginas já têm <meta name="robots" content="noindex, nofollow"> (pré-lançamento).
+name: Publicar no GitHub Pages (testes)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Montar o site (somente arquivos públicos)
+        run: |
+          mkdir -p _site
+          cp index.html privacidade.html _site/
+          cp -R css js assets _site/
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
