@@ -98,6 +98,12 @@ Em seguida, aponte um CNAME/A para o gateway da ZeroServer (instruções no reto
 docker build -t seguronamao-lp:local . && docker run --rm -p 8080:8181 seguronamao-lp:local
 ```
 
+## Indexação (pré-lançamento)
+
+As páginas estão marcadas como **não indexáveis**: `<meta name="robots" content="noindex, nofollow">` em `index.html` e `privacidade.html`, e o cabeçalho `X-Robots-Tag` no `nginx.conf`. Não use `Disallow` no `robots.txt`: ele impede o buscador de ler o `noindex`.
+
+No lançamento oficial, remova a meta tag de `index.html` e o `X-Robots-Tag` do `nginx.conf` (a política de privacidade pode continuar `noindex`).
+
 ## Pendências antes de publicar
 
 - [ ] Definir a ferramenta de e-mail e configurar o webhook
@@ -107,6 +113,7 @@ docker build -t seguronamao-lp:local . && docker run --rm -p 8080:8181 seguronam
 - [ ] Logo definitivo (o `favicon.svg` do app é o logo padrão do Vite)
 - [ ] Imagem de compartilhamento `og:image` (1200×630) e `og:url`
 - [ ] Domínio definitivo (+ `zs domain add`)
+- [ ] No lançamento: liberar indexação da `index.html` (ver seção "Indexação")
 - [x] Pacote `seguronamao-lp` público no GHCR (pull anônimo verificado)
 - [x] Afirmações de segurança validadas (isolamento entre corretoras, criptografia)
 - [x] FAQ validado (funciona no navegador; pode ser adicionado à tela inicial)
