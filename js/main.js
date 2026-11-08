@@ -196,6 +196,7 @@
       consentimento: true,
       consentimento_em: new Date().toISOString(),
       origem: 'landing-lista-espera',
+      ambiente: window.SNM_ENV || 'test',
       pagina: window.location.href.split('?')[0],
       utm: getUtm(),
     };

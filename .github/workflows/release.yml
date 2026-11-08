@@ -1,0 +1,99 @@
+# PRODUÇÃO (ZeroServer) — disparado somente por tags de versão vX.Y.Z.
+#
+#   1. build  → gera a imagem multi-arch (amd64 + arm64) e publica no GHCR:
+#               ghcr.io/fbadia/seguronamao-lp:X.Y.Z e :latest
+#   2. deploy → aguarda aprovação no environment "production" e roda `zs deploy`
+#               com a imagem X.Y.Z (o zs.yaml é ajustado só dentro do runner).
+#
+# Requisitos (uma vez):
+#   - Settings → Environments → "production" com revisor obrigatório
+#   - Secret ZS_API_KEY (API key do portal da ZeroServer, zsk_...) nesse environment
+#
+# Testes (GitHub Pages) ficam no workflow pages.yml, disparado pela main.
+name: Release (produção)
+
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE: ghcr.io/fbadia/seguronamao-lp
+
+concurrency:
+  group: production
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=raw,value=latest
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://seguronamao.seg.br
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar o CLI da ZeroServer
+        run: curl -fsSL https://raw.githubusercontent.com/zeroserver-cc/zsc-cli/main/install.sh | sh
+
+      - name: Autenticar com API key
+        env:
+          ZS_API_KEY: ${{ secrets.ZS_API_KEY }}
+        run: |
+          test -n "$ZS_API_KEY" || { echo "::error::Secret ZS_API_KEY não configurado no environment production"; exit 1; }
+          printf %s "$ZS_API_KEY" | zs login --api-key --token-stdin
+
+      - name: Apontar o zs.yaml para a versão ${{ needs.build.outputs.version }}
+        env:
+          VERSION: ${{ needs.build.outputs.version }}
+        run: |
+          sed -i -E "s|(image: ${IMAGE}):.*|\1:${VERSION}|" zs.yaml
+          grep -q "image: ${IMAGE}:${VERSION}" zs.yaml
+          cat zs.yaml
+
+      - name: Deploy na ZeroServer
+        run: zs deploy
+
+      - name: Status
+        if: always()
+        run: |
+          zs list || true
+          zs deployments seguronamao-lp || true
