@@ -1,6 +1,7 @@
 # Publica a landing page no GitHub Pages como ambiente de testes.
 # URL: https://fbadia.github.io/seguronamao_lp/
-# As páginas já têm <meta name="robots" content="noindex, nofollow"> (pré-lançamento).
+# Ambiente de testes: TODAS as páginas recebem "noindex" para não competir com o
+# domínio oficial (https://seguronamao.seg.br), que é o canonical.
 name: Publicar no GitHub Pages (testes)
 
 on:
@@ -31,6 +32,11 @@ jobs:
           mkdir -p _site
           cp index.html privacidade.html _site/
           cp -R css js assets _site/
+
+          # Ambiente de testes: impedir indexação (a privacidade já é noindex)
+          grep -q 'name="robots"' _site/index.html || \
+            sed -i 's|<meta charset="utf-8">|<meta charset="utf-8">\n  <meta name="robots" content="noindex, nofollow">|' _site/index.html
+          grep -q 'name="robots"' _site/index.html
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

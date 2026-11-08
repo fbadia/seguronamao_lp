@@ -7,7 +7,11 @@ Identidade visual: `quickAccessCorretor/docs/design-system-e-diretrizes.md` (tem
 ## Estrutura
 
 ```
-index.html         Landing page
+index.html         Landing page (indexável)
+robots.txt         Regras para buscadores + link do sitemap
+sitemap.xml        Páginas indexáveis
+llms.txt           Resumo do produto para motores de IA (GEO)
+docs/seo-geo.md    Estratégia de SEO/GEO e pautas de conteúdo
 privacidade.html   Política de Privacidade (LGPD) — falta revisão jurídica
 css/styles.css     Estilos (tokens do design system)
 js/config.js       ⚙️ Configuração: envio de leads e IDs de analytics
@@ -98,11 +102,15 @@ Em seguida, aponte um CNAME/A para o gateway da ZeroServer (instruções no reto
 docker build -t seguronamao-lp:local . && docker run --rm -p 8080:8181 seguronamao-lp:local
 ```
 
-## Indexação (pré-lançamento)
+## Indexação, SEO e GEO
 
-As páginas estão marcadas como **não indexáveis**: `<meta name="robots" content="noindex, nofollow">` em `index.html` e `privacidade.html`, e o cabeçalho `X-Robots-Tag` no `nginx.conf`. Não use `Disallow` no `robots.txt`: ele impede o buscador de ler o `noindex`.
+- **`index.html` é indexável**, com `canonical` para `https://seguronamao.seg.br/` e Schema JSON-LD (`Organization`, `WebSite`, `SoftwareApplication`, `FAQPage`).
+- **`privacidade.html` não é indexável**: `<meta name="robots" content="noindex, nofollow">` + cabeçalho `X-Robots-Tag` no `nginx.conf`. Ela fica fora do `sitemap.xml` e **não** é bloqueada no `robots.txt` (senão o buscador não lê o `noindex`).
+- **Ambiente de testes (GitHub Pages)**: o workflow injeta `noindex` também na `index.html`, para não competir com o domínio oficial.
+- `robots.txt`, `sitemap.xml` e `llms.txt` (resumo factual para motores de IA) ficam na raiz.
+- **FAQ**: o texto visível é gerado a partir do JSON-LD. Ao editar uma pergunta, altere os dois para continuarem idênticos.
 
-No lançamento oficial, remova a meta tag de `index.html` e o `X-Robots-Tag` do `nginx.conf` (a política de privacidade pode continuar `noindex`).
+Estratégia e próximos conteúdos: [docs/seo-geo.md](docs/seo-geo.md).
 
 ## Pendências antes de publicar
 
@@ -116,7 +124,9 @@ No lançamento oficial, remova a meta tag de `index.html` e o `X-Robots-Tag` do 
 - [ ] Logo definitivo (o `favicon.svg` do app é o logo padrão do Vite)
 - [ ] Imagem de compartilhamento `og:image` (1200×630) e `og:url`
 - [ ] Domínio definitivo (+ `zs domain add`)
-- [ ] No lançamento: liberar indexação da `index.html` (ver seção "Indexação")
+- [x] Indexação da `index.html` liberada (a `privacidade.html` segue `noindex`)
+- [ ] Apontar `seguronamao.seg.br` para o servidor e cadastrar no Google Search Console e no Bing Webmaster Tools (enviar o `sitemap.xml`)
+- [ ] Atualizar `lastmod` do `sitemap.xml` a cada mudança relevante de conteúdo
 - [x] Pacote `seguronamao-lp` público no GHCR (pull anônimo verificado)
 - [x] Afirmações de segurança validadas (isolamento entre corretoras, criptografia)
 - [x] FAQ validado (funciona no navegador; pode ser adicionado à tela inicial)

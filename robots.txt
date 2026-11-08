@@ -1,0 +1,6 @@
+# A política de privacidade NÃO é bloqueada aqui de propósito: ela usa
+# "noindex" (meta tag + X-Robots-Tag), e o buscador precisa acessá-la para ler essa instrução.
+User-agent: *
+Allow: /
+
+Sitemap: https://seguronamao.seg.br/sitemap.xml
