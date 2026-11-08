@@ -2,19 +2,129 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <!-- Pré-lançamento: não indexar. Remover (e liberar o robots.txt) no lançamento oficial. -->
-  <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>SeguroNaMão — A apólice do seu cliente em segundos</title>
-  <meta name="description" content="Plataforma para corretores de seguros independentes: busque por placa, CPF ou nome e descubra em segundos a seguradora e os dados da apólice do seu cliente. Entre na lista de acesso antecipado.">
+  <title>Busca de apólice por placa e CPF para corretor | SeguroNaMão</title>
+  <meta name="description" content="Sistema para corretor de seguros: busque a apólice por placa, CPF ou nome em segundos, de qualquer seguradora. IA lê os PDFs. Peça acesso ao beta.">
+  <link rel="canonical" href="https://seguronamao.seg.br/">
   <meta name="theme-color" content="#0a0d14">
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="SeguroNaMão — A apólice do seu cliente em segundos">
-  <meta property="og:description" content="Seu cliente ligou com um sinistro? Busque por placa, CPF ou nome e saiba na hora qual é a seguradora. Acesso antecipado para corretores.">
-  <!-- TODO: adicionar og:image (1200x630) e og:url quando o domínio estiver definido -->
+  <meta property="og:site_name" content="SeguroNaMão">
+  <meta property="og:url" content="https://seguronamao.seg.br/">
+  <meta property="og:title" content="SeguroNaMão: a apólice do seu cliente em segundos, na hora do sinistro">
+  <meta property="og:description" content="Busque a apólice por placa, CPF ou nome e saiba na hora qual é a seguradora. Funciona com qualquer seguradora e ramo. Acesso antecipado para corretores.">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: adicionar og:image / twitter:image (1200x630) -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://seguronamao.seg.br/#organization",
+        "name": "SeguroNaMão",
+        "legalName": "F T BADIA LTDA",
+        "taxID": "44.282.415/0001-70",
+        "url": "https://seguronamao.seg.br/",
+        "logo": "https://seguronamao.seg.br/assets/logo.svg",
+        "email": "contato@seguronamao.seg.br",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. Copacabana, 953",
+          "addressLocality": "Porto Alegre",
+          "addressRegion": "RS",
+          "addressCountry": "BR"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://seguronamao.seg.br/#website",
+        "url": "https://seguronamao.seg.br/",
+        "name": "SeguroNaMão",
+        "inLanguage": "pt-BR",
+        "publisher": { "@id": "https://seguronamao.seg.br/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://seguronamao.seg.br/#software",
+        "name": "SeguroNaMão",
+        "url": "https://seguronamao.seg.br/",
+        "description": "Plataforma web para corretores de seguros que lê PDFs de apólices com inteligência artificial e permite buscar, por placa, CPF/CNPJ ou nome do segurado, a seguradora, o número da apólice, a vigência e o bem segurado. Funciona com qualquer seguradora e qualquer ramo, sem integração com as seguradoras.",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Gestão de apólices para corretoras de seguros",
+        "operatingSystem": "Web (navegador do celular ou do computador)",
+        "inLanguage": "pt-BR",
+        "audience": {
+          "@type": "BusinessAudience",
+          "audienceType": "Corretores de seguros independentes e pequenas e médias corretoras no Brasil"
+        },
+        "featureList": [
+          "Busca de apólice por placa do veículo, CPF/CNPJ ou nome do segurado",
+          "Leitura automática de apólices em PDF por inteligência artificial",
+          "Funciona com qualquer seguradora e qualquer ramo, sem integração ou API",
+          "Interface mobile-first, acessível pelo navegador do celular",
+          "Acesso para equipes com permissões definidas pelo administrador",
+          "Carteira isolada por corretora e dados criptografados, conforme a LGPD"
+        ],
+        "publisher": { "@id": "https://seguronamao.seg.br/#organization" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://seguronamao.seg.br/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "O que é o SeguroNaMão?",
+            "acceptedAnswer": { "@type": "Answer", "text": "O SeguroNaMão é uma plataforma web para corretores de seguros que encontra a apólice de um cliente em segundos. Você busca pela placa, pelo CPF/CNPJ ou pelo nome e vê a seguradora, o número da apólice, a vigência e o bem segurado. Foi feito para o atendimento de sinistros, quando o cliente liga pedindo ajuda." }
+          },
+          {
+            "@type": "Question",
+            "name": "Como buscar uma apólice pela placa do veículo?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No SeguroNaMão, basta digitar a placa no campo de busca, mesmo incompleta. A plataforma mostra a apólice vinculada ao veículo, com a seguradora, o número da apólice e a vigência. A mesma busca funciona por CPF/CNPJ ou nome do segurado." }
+          },
+          {
+            "@type": "Question",
+            "name": "Funciona com quais seguradoras?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Com todas. O SeguroNaMão é multisseguradora e não depende de integração ou API com as seguradoras: ele lê os PDFs das apólices que você já recebe. Se você tem a apólice em PDF, consegue buscá-la." }
+          },
+          {
+            "@type": "Question",
+            "name": "Atende quais ramos de seguro?",
+            "acceptedAnswer": { "@type": "Answer", "text": "O SeguroNaMão é multirramo: auto, residencial, empresarial e outros ramos são consultados da mesma forma. A busca é feita pelo nome ou documento do segurado e, no caso de veículos, também pela placa." }
+          },
+          {
+            "@type": "Question",
+            "name": "Como a IA lê as apólices em PDF?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Você envia os PDFs das apólices e a inteligência artificial do SeguroNaMão extrai automaticamente o segurado, o bem, a seguradora, o número da apólice e a vigência. Não é preciso digitar nem cadastrar nada manualmente." }
+          },
+          {
+            "@type": "Question",
+            "name": "Preciso instalar algum aplicativo?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Não. O SeguroNaMão funciona direto no navegador do celular ou do computador. No celular, você pode adicioná-lo à tela inicial para abrir como um app." }
+          },
+          {
+            "@type": "Question",
+            "name": "Os dados dos meus clientes ficam seguros?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sim. Cada corretora tem sua carteira isolada das demais, os dados são criptografados e o tratamento segue a LGPD. Ninguém de fora da sua corretora tem acesso aos seus clientes." }
+          },
+          {
+            "@type": "Question",
+            "name": "Quanto vai custar?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Os planos serão anunciados no lançamento, com opções para corretor individual e para corretoras com equipe. Quem está na lista de acesso antecipado fica sabendo primeiro." }
+          },
+          {
+            "@type": "Question",
+            "name": "Quando posso começar a usar?",
+            "acceptedAnswer": { "@type": "Answer", "text": "O MVP está em fase final e o beta será liberado aos poucos para quem está na lista, por ordem de cadastro. Você recebe o convite por e-mail e WhatsApp." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,6 +150,7 @@
         <a href="#o-problema">O problema</a>
         <a href="#como-funciona">Como funciona</a>
         <a href="#recursos">Recursos</a>
+        <a href="#comparativo">Comparativo</a>
         <a href="#faq">Dúvidas</a>
         <a class="btn btn-primary btn-sm" href="#acesso">Quero acesso antecipado</a>
       </nav>
@@ -53,12 +164,13 @@
       <div class="container hero-inner">
         <div class="hero-copy">
           <span class="pill"><span class="pulse-indicator" aria-hidden="true"></span> MVP em fase final · beta fechado</span>
+          <p class="overline hero-overline">Sistema de busca de apólices para corretores de seguros</p>
           <h1>
-            Seu cliente ligou com um sinistro.
-            <span class="text-gradient">Em segundos, você sabe qual é a seguradora.</span>
+            Seu cliente ligou com um sinistro?
+            <span class="text-gradient">Encontre a apólice e a seguradora em segundos.</span>
           </h1>
           <p class="lead">
-            Busque por placa, CPF ou nome e veja a apólice completa: seguradora, número, vigência e o bem segurado. Do celular, de onde você estiver.
+            Busque a apólice por placa, CPF/CNPJ ou nome e veja seguradora, número, vigência e bem segurado. A IA lê os PDFs das apólices de qualquer seguradora, e você consulta pelo celular, de onde estiver.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#acesso">
@@ -68,8 +180,8 @@
             <a class="btn btn-secondary" href="#como-funciona">Como funciona</a>
           </div>
           <ul class="hero-points">
-            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10.5 3 3 7-7" /></svg>Qualquer seguradora</li>
-            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10.5 3 3 7-7" /></svg>Qualquer ramo</li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10.5 3 3 7-7" /></svg>Multisseguradora</li>
+            <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10.5 3 3 7-7" /></svg>Multirramo</li>
             <li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 10.5 3 3 7-7" /></svg>Feito para o celular</li>
           </ul>
         </div>
@@ -131,20 +243,38 @@
       </div>
     </section>
 
+    <!-- ============ O QUE É ============ -->
+    <section class="section section-define" id="o-que-e">
+      <div class="container container-narrow">
+        <div class="define reveal">
+          <p class="overline">O que é</p>
+          <h2>O que é o SeguroNaMão</h2>
+          <p class="define-lead">O <strong>SeguroNaMão</strong> é uma plataforma web para corretores de seguros independentes e pequenas e médias corretoras. Ela lê os PDFs das apólices com inteligência artificial e permite encontrar, em segundos, a <strong>seguradora</strong>, o <strong>número da apólice</strong>, a <strong>vigência</strong> e o <strong>bem segurado</strong> de qualquer cliente, buscando pela placa do veículo, pelo CPF/CNPJ ou pelo nome.</p>
+          <p>É <strong>multisseguradora</strong> e <strong>multirramo</strong>: funciona com apólices de qualquer seguradora e de qualquer ramo, sem integração ou API. Foi criado para o atendimento de sinistros, quando o cliente liga pedindo ajuda e o corretor precisa saber na hora qual seguradora acionar.</p>
+          <dl class="define-facts">
+            <div><dt>Para quem</dt><dd>Corretores de seguros independentes e corretoras de pequeno e médio porte</dd></div>
+            <div><dt>Busca por</dt><dd>Placa do veículo, CPF/CNPJ ou nome do segurado</dd></div>
+            <div><dt>Mostra</dt><dd>Seguradora, nº da apólice, vigência e bem segurado</dd></div>
+            <div><dt>Onde usar</dt><dd>No navegador do celular ou do computador, sem instalar nada</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ O PROBLEMA ============ -->
     <section class="section" id="o-problema">
       <div class="container">
         <div class="section-head reveal">
           <p class="overline">O momento do sinistro</p>
-          <h2>Sábado, 22h. O telefone toca.</h2>
-          <p class="section-lead">É seu cliente, parado no acostamento ou com a casa alagada. Ele quer ajuda agora. E a primeira pergunta é sempre a mesma: <em>qual é a seguradora?</em></p>
+          <h2>Sábado, 22h: seu cliente sofreu um sinistro e precisa da apólice agora</h2>
+          <p class="section-lead">Ele está parado no acostamento ou com a casa alagada e quer ajuda imediata. A primeira pergunta é sempre a mesma: <em>qual é a seguradora?</em></p>
         </div>
 
         <div class="compare">
           <article class="compare-card compare-before reveal">
             <header>
               <span class="compare-tag">Hoje</span>
-              <h3>Caça ao PDF</h3>
+              <h3>Caça ao PDF em e-mails e portais</h3>
             </header>
             <ol class="steps-list">
               <li>“Só um minuto, vou verificar…”</li>
@@ -162,7 +292,7 @@
           <article class="compare-card compare-after reveal">
             <header>
               <span class="compare-tag">Com o SeguroNaMão</span>
-              <h3>Uma busca</h3>
+              <h3>Uma busca no celular</h3>
             </header>
             <ol class="steps-list">
               <li>Abre o SeguroNaMão no celular</li>
@@ -181,25 +311,25 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="overline">Como funciona</p>
-          <h2>Da pilha de PDFs a uma busca de segundos</h2>
-          <p class="section-lead">Você não precisa digitar nada. A plataforma lê as apólices que você já tem e organiza tudo para a hora em que precisar.</p>
+          <h2>Como funciona: leitura de apólices em PDF por IA e busca em segundos</h2>
+          <p class="section-lead">O SeguroNaMão funciona em três etapas. O corretor envia os PDFs das apólices, a inteligência artificial extrai os dados e, na hora do sinistro, a apólice é encontrada com uma busca.</p>
         </div>
 
         <ol class="how">
           <li class="how-step glass-card reveal">
             <span class="how-num">1</span>
-            <h3>Envie as apólices</h3>
-            <p>Suba os PDFs das apólices dos seus clientes, de qualquer seguradora. Pode mandar vários de uma vez.</p>
+            <h3>Envie os PDFs das apólices</h3>
+            <p>O corretor envia os PDFs das apólices dos clientes, de qualquer seguradora e de qualquer ramo. É possível enviar vários arquivos de uma vez.</p>
           </li>
           <li class="how-step glass-card reveal">
             <span class="how-num">2</span>
-            <h3>A IA organiza</h3>
-            <p>A leitura inteligente extrai segurado, bem, seguradora, número e vigência, sem preenchimento manual.</p>
+            <h3>A IA extrai os dados da apólice</h3>
+            <p>A inteligência artificial lê cada PDF e extrai segurado, bem segurado, seguradora, número da apólice e vigência. Não há digitação nem cadastro manual.</p>
           </li>
           <li class="how-step glass-card reveal">
             <span class="how-num">3</span>
-            <h3>Busque quando precisar</h3>
-            <p>Na hora do sinistro, digite placa, CPF/CNPJ ou nome e tenha a resposta na palma da mão.</p>
+            <h3>Busque por placa, CPF/CNPJ ou nome</h3>
+            <p>Na hora do sinistro, o corretor digita a placa, o CPF/CNPJ ou o nome do cliente e vê a apólice em segundos, pelo celular ou pelo computador.</p>
           </li>
         </ol>
       </div>
@@ -210,7 +340,8 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="overline">Recursos</p>
-          <h2>Pensado para o dia a dia do corretor independente</h2>
+          <h2>Recursos do SeguroNaMão para corretores de seguros</h2>
+          <p class="section-lead">Tudo o que o corretor independente precisa para consultar apólices com rapidez, inclusive fora do escritório.</p>
         </div>
 
         <div class="features">
@@ -218,49 +349,110 @@
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
-            <h3>Busca instantânea</h3>
-            <p>Placa, CPF/CNPJ ou nome, mesmo incompleto. A apólice certa aparece enquanto você digita.</p>
+            <h3>Busca de apólice por placa, CPF ou nome</h3>
+            <p>O SeguroNaMão encontra a apólice pela placa do veículo, pelo CPF/CNPJ ou pelo nome do segurado, mesmo com o termo incompleto. Os resultados aparecem enquanto você digita.</p>
           </article>
 
           <article class="feature glass-card reveal">
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h6M9 17h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
-            <h3>Leitura de apólices por IA</h3>
-            <p>Os PDFs viram dados organizados automaticamente. Chega de copiar e colar informação de documento.</p>
-          </article>
-
-          <article class="feature glass-card reveal">
-            <div class="feature-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.5" stroke="currentColor" stroke-width="2"/><path d="M3 20c.6-3.4 3-5.5 6-5.5s5.4 2.1 6 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.7.8 2.8 2.6 3 5.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Para você e sua equipe</h3>
-            <p>Corretor solo ou corretora com vários profissionais: todos consultam a mesma carteira, com permissões definidas pelo administrador.</p>
+            <h3>Leitura de apólices em PDF por IA</h3>
+            <p>A inteligência artificial transforma os PDFs das apólices em dados organizados e pesquisáveis. O corretor não precisa copiar, colar nem digitar informações.</p>
           </article>
 
           <article class="feature glass-card reveal">
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z" stroke="currentColor" stroke-width="2"/></svg>
             </div>
-            <h3>Qualquer seguradora, qualquer ramo</h3>
-            <p>Auto, residencial, empresarial, vida… A plataforma não depende de integração com seguradoras: ela trabalha com as apólices da sua carteira.</p>
+            <h3>Multisseguradora e multirramo, sem integração</h3>
+            <p>Funciona com apólices de qualquer seguradora e de qualquer ramo: auto, residencial, empresarial, vida e outros. Não depende de API ou integração com as seguradoras.</p>
           </article>
 
           <article class="feature glass-card reveal">
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><rect x="6" y="2.5" width="12" height="19" rx="3" stroke="currentColor" stroke-width="2"/><path d="M10.5 18h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
-            <h3>No bolso, não no escritório</h3>
-            <p>Interface pensada primeiro para o celular, com botões grandes e leitura fácil, inclusive na beira da estrada.</p>
+            <h3>Mobile-first: no bolso, não no escritório</h3>
+            <p>A interface foi pensada primeiro para o celular e funciona no navegador, sem instalar aplicativo. É feita para consultas na estrada e fora do horário comercial.</p>
+          </article>
+
+          <article class="feature glass-card reveal">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.5" stroke="currentColor" stroke-width="2"/><path d="M3 20c.6-3.4 3-5.5 6-5.5s5.4 2.1 6 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.7.8 2.8 2.6 3 5.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Para corretor solo e para equipes</h3>
+            <p>Corretores individuais e corretoras com vários profissionais consultam a mesma carteira. O administrador define as permissões de cada usuário.</p>
           </article>
 
           <article class="feature glass-card reveal" id="seguranca">
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 5 6v5.5c0 4.4 3 8.1 7 9.5 4-1.4 7-5.1 7-9.5V6l-7-3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3>Dados protegidos (LGPD)</h3>
-            <p>A carteira de cada corretora fica isolada das demais e os dados são criptografados. Seus clientes continuam sendo só seus.</p>
+            <h3>Dados protegidos, conforme a LGPD</h3>
+            <p>A carteira de cada corretora fica isolada das demais e os dados são criptografados. O tratamento de dados segue a LGPD, e seus clientes continuam sendo só seus.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMPARATIVO ============ -->
+    <section class="section section-alt" id="comparativo">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="overline">Comparativo</p>
+          <h2>Busca manual de apólice x SeguroNaMão</h2>
+          <p class="section-lead">Como fica a consulta de uma apólice no atendimento de um sinistro, antes e depois do SeguroNaMão.</p>
+        </div>
+
+        <div class="table-wrap reveal">
+          <table class="compare-table">
+            <caption class="sr-only">Comparativo entre a busca manual de apólices e o SeguroNaMão</caption>
+            <thead>
+              <tr>
+                <th scope="col">Critério</th>
+                <th scope="col">Sem SeguroNaMão <span>(portais, e-mails e pastas)</span></th>
+                <th scope="col">Com SeguroNaMão <span>(seguronamao.seg.br)</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Onde está a apólice</th>
+                <td data-label="Sem SeguroNaMão">Espalhada em e-mails, WhatsApp, pastas e no portal de cada seguradora</td>
+                <td data-label="Com SeguroNaMão">Em uma única base pesquisável, com apólices de todas as seguradoras</td>
+              </tr>
+              <tr>
+                <th scope="row">Como descobrir a seguradora</th>
+                <td data-label="Sem SeguroNaMão">Lembrar, procurar o PDF ou testar portal por portal</td>
+                <td data-label="Com SeguroNaMão">Digitar a placa, o CPF/CNPJ ou o nome do cliente</td>
+              </tr>
+              <tr>
+                <th scope="row">Tempo até a resposta</th>
+                <td data-label="Sem SeguroNaMão">Minutos de procura, com o cliente esperando</td>
+                <td data-label="Com SeguroNaMão">Segundos, com o cliente ainda na linha</td>
+              </tr>
+              <tr>
+                <th scope="row">Fora do escritório</th>
+                <td data-label="Sem SeguroNaMão">Depende do computador e dos arquivos do escritório</td>
+                <td data-label="Com SeguroNaMão">Pelo navegador do celular, de qualquer lugar e a qualquer hora</td>
+              </tr>
+              <tr>
+                <th scope="row">Cadastro das apólices</th>
+                <td data-label="Sem SeguroNaMão">Digitação manual dos dados de cada apólice</td>
+                <td data-label="Com SeguroNaMão">Leitura automática dos PDFs por inteligência artificial</td>
+              </tr>
+              <tr>
+                <th scope="row">Seguradoras e ramos</th>
+                <td data-label="Sem SeguroNaMão">Um portal e um login para cada seguradora</td>
+                <td data-label="Com SeguroNaMão">Qualquer seguradora e qualquer ramo, sem integração</td>
+              </tr>
+              <tr>
+                <th scope="row">Equipe</th>
+                <td data-label="Sem SeguroNaMão">Cada pessoa procura nos próprios arquivos</td>
+                <td data-label="Com SeguroNaMão">Toda a equipe consulta a mesma carteira, com permissões</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -336,33 +528,45 @@
       <div class="container container-narrow">
         <div class="section-head reveal">
           <p class="overline">Dúvidas</p>
-          <h2>Perguntas frequentes</h2>
+          <h2>Perguntas frequentes sobre o SeguroNaMão</h2>
         </div>
 
         <div class="faq reveal">
           <details>
-            <summary>Funciona com quais seguradoras?</summary>
-            <p>Com todas. O SeguroNaMão não depende de integração com seguradoras: ele lê os PDFs das apólices que você já recebe e organiza as informações. Se você tem a apólice, consegue buscá-la.</p>
+            <summary><h3>O que é o SeguroNaMão?</h3></summary>
+            <p>O SeguroNaMão é uma plataforma web para corretores de seguros que encontra a apólice de um cliente em segundos. Você busca pela placa, pelo CPF/CNPJ ou pelo nome e vê a seguradora, o número da apólice, a vigência e o bem segurado. Foi feito para o atendimento de sinistros, quando o cliente liga pedindo ajuda.</p>
           </details>
           <details>
-            <summary>Atende quais ramos de seguro?</summary>
-            <p>A plataforma não é limitada a um ramo. Auto, residencial, empresarial e outros podem ser consultados da mesma forma: pelo nome ou documento do segurado e, no caso de veículos, também pela placa.</p>
+            <summary><h3>Como buscar uma apólice pela placa do veículo?</h3></summary>
+            <p>No SeguroNaMão, basta digitar a placa no campo de busca, mesmo incompleta. A plataforma mostra a apólice vinculada ao veículo, com a seguradora, o número da apólice e a vigência. A mesma busca funciona por CPF/CNPJ ou nome do segurado.</p>
           </details>
           <details>
-            <summary>Preciso instalar algum aplicativo?</summary>
+            <summary><h3>Funciona com quais seguradoras?</h3></summary>
+            <p>Com todas. O SeguroNaMão é multisseguradora e não depende de integração ou API com as seguradoras: ele lê os PDFs das apólices que você já recebe. Se você tem a apólice em PDF, consegue buscá-la.</p>
+          </details>
+          <details>
+            <summary><h3>Atende quais ramos de seguro?</h3></summary>
+            <p>O SeguroNaMão é multirramo: auto, residencial, empresarial e outros ramos são consultados da mesma forma. A busca é feita pelo nome ou documento do segurado e, no caso de veículos, também pela placa.</p>
+          </details>
+          <details>
+            <summary><h3>Como a IA lê as apólices em PDF?</h3></summary>
+            <p>Você envia os PDFs das apólices e a inteligência artificial do SeguroNaMão extrai automaticamente o segurado, o bem, a seguradora, o número da apólice e a vigência. Não é preciso digitar nem cadastrar nada manualmente.</p>
+          </details>
+          <details>
+            <summary><h3>Preciso instalar algum aplicativo?</h3></summary>
             <p>Não. O SeguroNaMão funciona direto no navegador do celular ou do computador. No celular, você pode adicioná-lo à tela inicial para abrir como um app.</p>
           </details>
           <details>
-            <summary>Os dados dos meus clientes ficam seguros?</summary>
-            <p>Sim. Cada corretora tem sua carteira isolada das demais, os dados são criptografados e tratados de acordo com a LGPD. Ninguém de fora da sua corretora tem acesso aos seus clientes.</p>
+            <summary><h3>Os dados dos meus clientes ficam seguros?</h3></summary>
+            <p>Sim. Cada corretora tem sua carteira isolada das demais, os dados são criptografados e o tratamento segue a LGPD. Ninguém de fora da sua corretora tem acesso aos seus clientes.</p>
           </details>
           <details>
-            <summary>Quanto vai custar?</summary>
+            <summary><h3>Quanto vai custar?</h3></summary>
             <p>Os planos serão anunciados no lançamento, com opções para corretor individual e para corretoras com equipe. Quem está na lista de acesso antecipado fica sabendo primeiro.</p>
           </details>
           <details>
-            <summary>Quando posso começar a usar?</summary>
-            <p>O MVP está em fase final. Vamos liberar o beta aos poucos para quem está na lista, por ordem de cadastro. Você recebe o convite por e-mail e WhatsApp.</p>
+            <summary><h3>Quando posso começar a usar?</h3></summary>
+            <p>O MVP está em fase final e o beta será liberado aos poucos para quem está na lista, por ordem de cadastro. Você recebe o convite por e-mail e WhatsApp.</p>
           </details>
         </div>
       </div>

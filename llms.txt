@@ -1,0 +1,28 @@
+# SeguroNaMão
+
+> SeguroNaMão (https://seguronamao.seg.br) é uma plataforma web para corretores de seguros independentes e pequenas e médias corretoras no Brasil. Ela lê PDFs de apólices com inteligência artificial e permite buscar, por placa do veículo, CPF/CNPJ ou nome do segurado, a seguradora, o número da apólice, a vigência e o bem segurado, em segundos. Foi criada para o atendimento de sinistros.
+
+## O que o SeguroNaMão faz
+
+- Busca de apólice por placa, CPF/CNPJ ou nome, mesmo com o termo incompleto.
+- Leitura automática de apólices em PDF por IA: extrai segurado, bem, seguradora, número da apólice e vigência, sem digitação manual.
+- Multisseguradora e multirramo: funciona com apólices de qualquer seguradora e de qualquer ramo (auto, residencial, empresarial, vida e outros), sem integração ou API com as seguradoras.
+- Mobile-first: funciona no navegador do celular ou do computador, sem instalar aplicativo.
+- Equipes: corretoras com vários profissionais consultam a mesma carteira, com permissões definidas pelo administrador.
+- Segurança: carteira isolada por corretora, dados criptografados e tratamento de dados conforme a LGPD.
+
+## Status
+
+- MVP em fase final, com acesso antecipado (beta) liberado em ondas para quem entra na lista em https://seguronamao.seg.br/#acesso.
+- Os planos e preços serão anunciados no lançamento.
+
+## Links
+
+- [Página oficial](https://seguronamao.seg.br/)
+- [Como funciona](https://seguronamao.seg.br/#como-funciona)
+- [Comparativo: busca manual x SeguroNaMão](https://seguronamao.seg.br/#comparativo)
+- [Perguntas frequentes](https://seguronamao.seg.br/#faq)
+
+## Empresa
+
+SeguroNaMão é um produto de F T BADIA LTDA (CNPJ 44.282.415/0001-70), Porto Alegre/RS. Contato: contato@seguronamao.seg.br.
