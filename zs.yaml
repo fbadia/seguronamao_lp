@@ -7,7 +7,7 @@
 # imagem X.Y.Z, troca a versão abaixo (só dentro do runner) e roda `zs deploy` após aprovação.
 #
 # A versão abaixo é usada apenas em deploy manual (`zs deploy` local, ex.: rollback).
-app: seguronamao-lp
+app: seguronamao_site
 
 # Preferência (não obrigatória) por nodes no Brasil.
 placement:
@@ -15,7 +15,7 @@ placement:
 
 services:
   - name: web
-    image: ghcr.io/fbadia/seguronamao-lp:0.1.1
+    image: ghcr.io/fbadia/seguronamao-lp:0.2.1
     ports:
-      - "8181"
+      - "80"
     exposed: true

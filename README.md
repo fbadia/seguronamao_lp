@@ -110,12 +110,12 @@ O `zs.yaml` guarda a versão usada em deploy manual. Para voltar a uma versão a
    zs list
    ```
 
-A ZeroServer roda **imagens Docker já publicadas** (não faz build a partir do código), com uma instância por app. Arquivos envolvidos: `Dockerfile`, `nginx.conf` (porta 8181, gzip, cache, cabeçalhos de segurança, `/healthz`), `.dockerignore` e `zs.yaml`.
+A ZeroServer roda **imagens Docker já publicadas** (não faz build a partir do código), com uma instância por app. Arquivos envolvidos: `Dockerfile`, `nginx.conf` (porta 80, gzip, cache, cabeçalhos de segurança, `/healthz`), `.dockerignore` e `zs.yaml`.
 
 ### Domínio próprio
 
 ```bash
-zs domain add seguronamao.seg.br --app seguronamao-lp   # retorna o registro TXT
+zs domain add seguronamao.seg.br --app seguronamao_site   # retorna o registro TXT
 zs domain verify seguronamao.seg.br                     # depois de criar o TXT no DNS
 ```
 
@@ -124,7 +124,7 @@ Em seguida, aponte um CNAME/A para o gateway da ZeroServer (instruções no reto
 ### Testar a imagem localmente
 
 ```bash
-docker build -t seguronamao-lp:local . && docker run --rm -p 8080:8181 seguronamao-lp:local
+docker build -t seguronamao-lp:local . && docker run --rm -p 8080:80 seguronamao-lp:local
 ```
 
 ## Indexação, SEO e GEO
