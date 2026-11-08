@@ -8,7 +8,7 @@ Identidade visual: `quickAccessCorretor/docs/design-system-e-diretrizes.md` (tem
 
 ```
 index.html         Landing page
-privacidade.html   Modelo de Política de Privacidade (LGPD) — preencher e revisar
+privacidade.html   Política de Privacidade (LGPD) — falta revisão jurídica
 css/styles.css     Estilos (tokens do design system)
 js/config.js       ⚙️ Configuração: envio de leads e IDs de analytics
 js/main.js         Menu, animação do mockup, formulário, consentimento de cookies
@@ -108,8 +108,11 @@ No lançamento oficial, remova a meta tag de `index.html` e o `X-Robots-Tag` do 
 
 - [ ] Definir a ferramenta de e-mail e configurar o webhook
 - [ ] Preencher os IDs de GA4 / Meta Pixel
-- [ ] Preencher e revisar juridicamente `privacidade.html` (razão social, CNPJ, DPO, fornecedores)
-- [ ] E-mail de contato oficial no rodapé
+- [x] Dados da empresa, endereço e encarregado na `privacidade.html`
+- [ ] `privacidade.html`: preencher ferramentas de e-mail/automação (seção 5) quando escolhidas
+- [ ] Revisão jurídica da `privacidade.html` (e remover o aviso "Modelo em revisão")
+- [x] E-mail de contato no rodapé (`contato@seguronamao.seg.br`)
+- [ ] Confirmar que as caixas `contato@` e `privacidade@seguronamao.seg.br` existem e recebem e-mails
 - [ ] Logo definitivo (o `favicon.svg` do app é o logo padrão do Vite)
 - [ ] Imagem de compartilhamento `og:image` (1200×630) e `og:url`
 - [ ] Domínio definitivo (+ `zs domain add`)
